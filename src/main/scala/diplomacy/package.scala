@@ -29,6 +29,8 @@ package object diplomacy
     }
   }
 
+  implicit def realizeNodeHandleSeq[D, U, B <: Chisel.Data](seq: Seq[NodeHandle[D, U, B, D, U, B]]) = new NodeHandleSeq(seq)
+
   def SinkCardinality[T](body: Parameters => T)(implicit p: Parameters) = body(p.alterPartial {
     case CardinalityInferenceDirectionKey => CardinalityInferenceDirection.SINK_TO_SOURCE
   })
